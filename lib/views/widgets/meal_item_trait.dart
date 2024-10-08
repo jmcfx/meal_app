@@ -8,7 +8,7 @@ class MealItemTrait extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Padding(
-      padding: const EdgeInsets.all(4.0),
+      padding: const EdgeInsets.all(2.0),
       child: Row(
         children: [
           Icon(
@@ -17,7 +17,7 @@ class MealItemTrait extends StatelessWidget {
             color: Colors.white,
           ),
          const SizedBox(width: 6,),
-          Text(label, style: const TextStyle( color: Colors.white,  ),)
+          Text(label, style: const TextStyle( color: Colors.white,),)
         ],
       ),
     );
