@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meal_app/views/screens/categories.dart';
-
+import 'package:meal_app/views/screens/tabs.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,17 +13,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData( 
+      theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
-        scaffoldBackgroundColor: const  Color(0xFFeeedf2),
+        scaffoldBackgroundColor: const Color(0xFFeeedf2),
         appBarTheme: const AppBarTheme(
-          color:  Color(0xFFeeedf2),
-        ) 
+          color: Color(0xFFeeedf2),
+        ),
       ),
-      
-      home: const CategoriesScreen()
-  
+      home: const TabScreen(),
     );
   }
 }

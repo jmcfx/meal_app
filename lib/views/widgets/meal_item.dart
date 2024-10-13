@@ -30,7 +30,6 @@ class MealItem extends StatelessWidget {
       child: InkWell(
         onTap: () {
           onSelectedMeal(context, meal);
-     
         },
         child: Stack(
           children: [
@@ -66,21 +65,16 @@ class MealItem extends StatelessWidget {
                       height: 12,
                     ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         MealItemTrait(
                           icon: Icons.schedule,
                           label: " ${meal.duration} min ",
                         ),
-                        const SizedBox(
-                          width: 12,
-                        ),
+
                         MealItemTrait(
                           icon: Icons.work,
                           label: complexityText,
-                        ),
-                        const SizedBox(
-                          width: 12,
                         ),
                         MealItemTrait(
                           icon: Icons.attach_money,

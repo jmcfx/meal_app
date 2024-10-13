@@ -4,13 +4,15 @@ import 'package:meal_app/views/screens/meals_detail.dart';
 import 'package:meal_app/views/widgets/meal_item.dart';
 
 class MealsScreen extends StatelessWidget {
-  const MealsScreen({super.key, required this.tittle, required this.meals});
-  final String tittle;
+  const MealsScreen({super.key, this.tittle, required this.meals, required this.onToggleFavorite});
+  final String? tittle;
   final List<Meal> meals;
+  final void Function(Meal meal) onToggleFavorite;
 
   //selected Meal
-  void selectedMeal(BuildContext context, Meal meal ){
-    Navigator.of(context).push(MaterialPageRoute(builder: (context)=> MealsDetailScreen(meal: meal)));
+  void selectedMeal(BuildContext context, Meal meal) {
+    Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => MealsDetailScreen(meal: meal ,onToggleFavorite: onToggleFavorite, )));
   }
 
   @override
@@ -43,13 +45,19 @@ class MealsScreen extends StatelessWidget {
     // if meal is not Empty......
     if (meals.isNotEmpty) {
       content = ListView.builder(
-        itemCount: meals.length,
-        itemBuilder: (context, index) => MealItem(meal: meals[index], onSelectedMeal: selectedMeal )
-      );
+          itemCount: meals.length,
+          itemBuilder: (context, index) =>
+              MealItem(meal: meals[index], onSelectedMeal: selectedMeal));
+    }
+    if (tittle == null) {
+      return content;
+    }
+    if (tittle == null) {
+      return content;
     }
     return Scaffold(
       appBar: AppBar(
-        title: Text(tittle),
+        title: Text(tittle!),
       ),
       body: content,
     );
