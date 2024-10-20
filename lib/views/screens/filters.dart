@@ -28,7 +28,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
     _glutenFreeFilterSet = widget.currentFilters[Filter.glutenFree]!;
     _lactoseFreeFilterSet = widget.currentFilters[Filter.lactoseFree]!;
     _vegetarianFilterSet = widget.currentFilters[Filter.vegetarian]!;
-   _veganFilterSet = widget.currentFilters[Filter.vegan]!;
+    _veganFilterSet = widget.currentFilters[Filter.vegan]!;
   }
 
   @override
@@ -133,6 +133,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
               activeColor: Theme.of(context).colorScheme.tertiary,
               contentPadding: const EdgeInsets.only(left: 34, right: 22),
             ),
+            
           ],
         ),
       ),

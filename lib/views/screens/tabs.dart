@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meal_app/data/dummy_data.dart';
 import 'package:meal_app/models/meal_model.dart';
+import 'package:meal_app/providers/meals_provider.dart';
 import 'package:meal_app/views/screens/categories.dart';
 import 'package:meal_app/views/screens/filters.dart';
 import 'package:meal_app/views/screens/meals.dart';
@@ -13,14 +15,14 @@ const kInitialFilters = {
   Filter.vegan: false
 };
 
-class TabScreen extends StatefulWidget {
+class TabScreen extends ConsumerStatefulWidget {
   const TabScreen({super.key});
 
   @override
-  State<TabScreen> createState() => _TabScreenState();
+  ConsumerState<TabScreen> createState() => _TabScreenState();
 }
 
-class _TabScreenState extends State<TabScreen> {
+class _TabScreenState extends ConsumerState<TabScreen> {
   int _selectedPageIndex = 0;
   final List<Meal> _favoriteMeals = [];
   Map<Filter, bool> _selectedFilters = kInitialFilters;
@@ -59,8 +61,11 @@ class _TabScreenState extends State<TabScreen> {
   void _setScreen(String identifier) async {
     Navigator.of(context).pop();
     if (identifier == 'filters') {
-      final result = await Navigator.of(context).push<Map<Filter, bool>>(
-          MaterialPageRoute(builder: (context) =>  FiltersScreen(currentFilters: _selectedFilters ,)));
+      final result =
+          await Navigator.of(context).push<Map<Filter, bool>>(MaterialPageRoute(
+              builder: (context) => FiltersScreen(
+                    currentFilters: _selectedFilters,
+                  )));
       setState(() {
         _selectedFilters = result ?? kInitialFilters;
       });
@@ -69,7 +74,8 @@ class _TabScreenState extends State<TabScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final availableMeals = mealsList.where((meal) {
+   final meals  = ref.watch(mealsProvider);
+    final availableMeals = meals.where((meal) {
       if (_selectedFilters[Filter.glutenFree]! && !meal.isGlutenFree) {
         return false;
       }
@@ -121,5 +127,5 @@ class _TabScreenState extends State<TabScreen> {
         ],
       ),
     );
-  } 
+  }
 }
