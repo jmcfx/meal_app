@@ -50,10 +50,7 @@ class MealsScreen extends StatelessWidget {
               MealItem(meal: meals[index], onSelectedMeal: selectedMeal));
     }
     if (tittle == null) {
-      return content;
-    }
-    if (tittle == null) {
-      return content;
+      return  content;
     }
     return Scaffold(
       appBar: AppBar(
