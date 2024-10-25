@@ -56,7 +56,7 @@ class MealsScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(tittle!),
       ),
-      body: content,
+      body: content, 
     );
   }
 }
